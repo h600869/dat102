@@ -6,7 +6,7 @@ public class Person implements Comparable<Person> {
 	private String etternavn;
 	private int foedselsaar;
 
-	// Konstruktører
+	// Konstruktï¿½rer
 
 	public Person() {
 		this("", "", 0);
@@ -50,8 +50,24 @@ public class Person implements Comparable<Person> {
 
 	public int compareTo(Person denAndrePersonen) {
 		int resultat = 0;
-		//... Fyll ut
-		//Kall på compareTo i Stringklassen
+		if(this.getFoedselsaar()>denAndrePersonen.getFoedselsaar()) 
+		{
+			return 1;
+		}
+		else if(this.getFoedselsaar()<denAndrePersonen.getFoedselsaar()) 
+		{
+			return -1;
+		}
+		else 
+		{
+			resultat = this.getEtternavn().compareTo(denAndrePersonen.getEtternavn());
+			if(resultat ==0) 
+			{
+				resultat = 
+						this.getFornavn().compareTo(denAndrePersonen.getFornavn());
+			}
+		}
+		//Kall pï¿½ compareTo i Stringklassen
 		return resultat;
 	}//
 
