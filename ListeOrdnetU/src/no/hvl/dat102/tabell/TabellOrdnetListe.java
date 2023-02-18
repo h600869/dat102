@@ -25,7 +25,9 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			throw new EmptyCollectionException("ordnet liste");
 
 		T resultat = null;
-		// ... Fyll ut
+		resultat = liste[bak-1];
+		liste[bak-1] = null;
+		bak--;
 		return resultat;
 	}
 
@@ -35,7 +37,12 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			throw new EmptyCollectionException("ordnet liste");
 
 		T resultat = null;
-		// ... Fyll ut
+		resultat = foerste();
+		bak--;
+		for(int i=0; i<bak; i++) 
+		{
+			liste[i] = liste[i+1];
+		}
 		return resultat;
 	}
 
@@ -54,7 +61,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			throw new EmptyCollectionException("ordnet liste");
 		
 		T resultat = null;
-		// ...Fyll ut
+		resultat = liste[bak-1];
 
 		return resultat;
 	}
@@ -72,7 +79,22 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	@Override
 	public void leggTil(T element) {
 
-		// ...Fyll ut
+		if(bak == liste.length) utvid();
+		
+		int i =0;
+		int j = bak;
+		
+		while( i<bak && element.compareTo(liste[i]) > 0)
+		{
+			i++;
+		}
+		while(j>i) 
+		{
+			liste[j] = liste[j-1];
+			j--;
+		}
+		liste[i] = element;
+		bak++;
 	}
 
 	@Override
@@ -82,14 +104,34 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public T fjern(T element) {
-		// ...Fyll ut
-		return element;
+		T resultat = null;
+		int indeks = finn(element);
+		
+		if(indeks != IKKE_FUNNET)
+		{
+			resultat = liste[indeks];
+			bak--;
+			for(int i = indeks; i<bak; i++)
+			{
+				liste[i] = liste[i+1];
+			}
+			liste[bak] = null;
+		}
+		return resultat;
 
 	}
 
 	private int finn(T el) {
 		int i = 0, resultat = IKKE_FUNNET;
-		// ...Fyll ut
+
+		while (el != liste[i] && i<bak)
+		{
+			i++;
+		}
+		if(el== liste[i])
+		{
+			resultat=i;
+		}
 		return resultat;
 	}
 
