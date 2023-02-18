@@ -11,9 +11,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	private int antall;
 	private LinearNode<T> foerste, siste;
 
-	/**
-	 * Lager en ny tom liste.
-	 */
+	
 	public KjedetOrdnetListe() {
 		antall = 0;
 		foerste = null;
@@ -25,7 +23,14 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
-		T resultat = null;
+		T resultat = foerste.getElement();
+		foerste = foerste.getNeste();
+		antall--;
+		
+		if(erTom()) 
+		{
+			siste=null;
+		}
 		// ...Fyll ut
 		return resultat;
 	}
@@ -35,8 +40,23 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
-		T resultat = null;
-		// ...Fyll ut
+		T resultat = siste.getElement();
+		antall--;
+		if(antall==0) 
+		{
+			foerste=null;
+			siste=null;
+		}
+		else
+		{
+			siste = foerste;
+			for(int i=1; i<antall; i++) 
+			{
+				siste.getNeste();
+				
+				siste.setNeste(null);
+			}
+		}
 		return resultat;
 	}
 
@@ -73,7 +93,37 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	@Override
 	public void leggTil(T element) {
 
-		// ...Fyll ut
+		LinearNode<T> ny = new LinearNode<T>(element), denne = foerste, forrige = null;
+		
+		while(denne !=null && element.compareTo(denne.getElement()) > 0) 
+		{
+			forrige = denne;
+			denne = denne.getNeste();
+		}
+		
+		if (forrige == null) 
+		{
+			ny.setNeste(foerste);
+			foerste = ny;
+			if(antall == 0)
+			{
+				siste = ny;
+			}
+		}
+		
+		else if (denne == null)
+		{
+			forrige.setNeste(ny);
+			siste=ny;
+		}
+		
+		else
+		{
+			forrige.setNeste(ny);
+			ny.setNeste(denne);
+		}
+		
+		antall++;
 	}
 
 	@Override
@@ -87,7 +137,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (denne != null && element.equals(denne.getElement())) { // funnet
 			antall--;
 			svar = denne.getElement();
-			if (forrige == null) { // Første element
+			if (forrige == null) { // Fï¿½rste element
 				foerste = foerste.getNeste();
 				if (foerste == null) { // Tom liste
 					siste = null;
