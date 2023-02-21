@@ -26,7 +26,7 @@ public class Oppgave__1c {
 		Person person = new Person(fornavn, etternavn, fodselsaar);
 		listeMedPersoner.leggTil(person);
 				
-		System.out.println(fornavn+etternavn+fodselsaar);
+		System.out.println(fornavn+" "+etternavn+" "+fodselsaar);
 		}
 		
 		
