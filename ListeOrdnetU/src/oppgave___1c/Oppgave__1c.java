@@ -17,7 +17,7 @@ public class Oppgave__1c {
 		int fodselsaar;
 		
 		
-		for (int i =0; i<6; i++) {
+		for (int i =0; i<2; i++) {
 		System.out.println("Skriv inn info om person: ");
 		fornavn= scanner.nextLine();
 		etternavn = scanner.nextLine();
