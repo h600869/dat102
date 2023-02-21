@@ -50,12 +50,12 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		else
 		{
 			siste = foerste;
-			for(int i=1; i<antall; i++) 
+			for(int i=0; i<antall-1; i++) 
 			{
-				siste.getNeste();
+				siste = siste.getNeste();
 				
-				siste.setNeste(null);
 			}
+			siste.setNeste(null);
 		}
 		return resultat;
 	}
