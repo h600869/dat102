@@ -1,7 +1,6 @@
 package oppgave___1c;
 
 import java.util.*;
-import no.hvl.dat102.*;
 import no.hvl.dat102.adt.OrdnetListeADT;
 import no.hvl.dat102.kjedet.KjedetOrdnetListe;
 import no.hvl.dat102.listeklient.Person;
@@ -17,7 +16,7 @@ public class Oppgave__1c {
 		int fodselsaar;
 		
 		
-		for (int i =0; i<2; i++) {
+		for (int i =0; i<6; i++) {
 		System.out.println("Skriv inn info om person: ");
 		fornavn= scanner.nextLine();
 		etternavn = scanner.nextLine();
@@ -25,8 +24,9 @@ public class Oppgave__1c {
 		scanner.nextLine();
 		Person person = new Person(fornavn, etternavn, fodselsaar);
 		listeMedPersoner.leggTil(person);
-				
-		System.out.println(fornavn+" "+etternavn+" "+fodselsaar);
+		
+		
+		System.out.println(fornavn+" "+etternavn+" "+fodselsaar + " år");
 		}
 		
 		
