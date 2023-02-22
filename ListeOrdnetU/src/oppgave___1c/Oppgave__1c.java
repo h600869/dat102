@@ -16,7 +16,7 @@ public class Oppgave__1c {
 		int fodselsaar;
 		
 		
-		for (int i =0; i<6; i++) {
+		for (int i =0; i<2; i++) {
 		System.out.println("Skriv inn info om person: ");
 		fornavn= scanner.nextLine();
 		etternavn = scanner.nextLine();
@@ -25,6 +25,10 @@ public class Oppgave__1c {
 		Person person = new Person(fornavn, etternavn, fodselsaar);
 		listeMedPersoner.leggTil(person);
 		
+		/* while (i>0 || i<6)
+		 * listeMedPersoner.compareTo(person(fodselsaar).denAndrePerson);
+		 */
+			
 		
 		System.out.println(fornavn+" "+etternavn+" "+fodselsaar + " år");
 		}
