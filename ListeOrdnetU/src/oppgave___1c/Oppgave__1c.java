@@ -16,7 +16,7 @@ public class Oppgave__1c {
 		int fodselsaar;
 		
 		
-		for (int i =0; i<3; i++) {
+		for (int i =0; i<6; i++) {
 		System.out.println("Skriv inn info om person: ");
 		System.out.println("Fornavn: ");
 		fornavn= scanner.nextLine();
@@ -27,6 +27,7 @@ public class Oppgave__1c {
 		scanner.nextLine();
 		Person person = new Person(fornavn, etternavn, fodselsaar);
 		listeMedPersoner.leggTil(person);
+		
 		
 		
 		
