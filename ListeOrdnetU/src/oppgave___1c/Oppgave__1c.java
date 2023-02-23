@@ -16,17 +16,27 @@ public class Oppgave__1c {
 		int fodselsaar;
 		
 		
-		for (int i =0; i<6; i++) {
+		for (int i =0; i<3; i++) {
 		System.out.println("Skriv inn info om person: ");
+		System.out.println("Fornavn: ");
 		fornavn= scanner.nextLine();
+		System.out.println("Etternavn: ");
 		etternavn = scanner.nextLine();
+		System.out.println("Fødselsår: ");
 		fodselsaar = scanner.nextInt();
 		scanner.nextLine();
 		Person person = new Person(fornavn, etternavn, fodselsaar);
 		listeMedPersoner.leggTil(person);
 		
 		
+		
 		System.out.println(fornavn+" "+etternavn+" "+fodselsaar + " år");
+		}
+		
+		while (listeMedPersoner.antall()>0) 
+		{
+			Person person = listeMedPersoner.fjernSiste();
+			System.out.println(person);
 		}
 		
 		
