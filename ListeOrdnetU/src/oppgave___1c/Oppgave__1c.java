@@ -29,6 +29,7 @@ public class Oppgave__1c {
 		listeMedPersoner.leggTil(person);
 		
 		
+		
 		System.out.println(fornavn+" "+etternavn+" "+fodselsaar + " år");
 		}
 		
